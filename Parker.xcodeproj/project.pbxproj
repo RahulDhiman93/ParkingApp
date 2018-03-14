@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080459992057A9C800616EE0 /* GoogleDirections.json in Resources */ = {isa = PBXBuildFile; fileRef = 080459982057A9C800616EE0 /* GoogleDirections.json */; };
 		081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 081A75BE20552C4800B0628D /* SWRevealViewController.m */; };
-		081A75C22055B79600B0628D /* SearchMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A75C12055B79600B0628D /* SearchMapViewController.swift */; };
 		081A75C42055BD1D00B0628D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */; };
 		08221F73204F221800EEDE8C /* HamburgerArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 08221F39204F221100EEDE8C /* HamburgerArrow.json */; };
 		08221F74204F221800EEDE8C /* Q.json in Resources */ = {isa = PBXBuildFile; fileRef = 08221F3A204F221100EEDE8C /* Q.json */; };
@@ -105,9 +105,9 @@
 
 /* Begin PBXFileReference section */
 		0732490B034A0EDAD51E180B /* Pods-ParkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkerTests/Pods-ParkerTests.release.xcconfig"; sourceTree = "<group>"; };
+		080459982057A9C800616EE0 /* GoogleDirections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GoogleDirections.json; sourceTree = "<group>"; };
 		081A75BD20552C4800B0628D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		081A75BE20552C4800B0628D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		081A75C12055B79600B0628D /* SearchMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapViewController.swift; sourceTree = "<group>"; };
 		081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		08221F38204F221000EEDE8C /* Parker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parker-Bridging-Header.h"; sourceTree = "<group>"; };
 		08221F39204F221100EEDE8C /* HamburgerArrow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HamburgerArrow.json; sourceTree = "<group>"; };
@@ -324,7 +324,6 @@
 				0822BF20204E5EFF0094AFA3 /* LoginViewController.swift */,
 				08221FB72053120600EEDE8C /* ForanimationsViewController.swift */,
 				0822BF24204E5F2D0094AFA3 /* MainPageViewController.swift */,
-				081A75C12055B79600B0628D /* SearchMapViewController.swift */,
 				081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */,
 				0822BEF2204DB75C0094AFA3 /* Main.storyboard */,
 				0822BEF5204DB75C0094AFA3 /* Assets.xcassets */,
@@ -333,6 +332,7 @@
 				081A75BE20552C4800B0628D /* SWRevealViewController.m */,
 				0822BEFA204DB75C0094AFA3 /* Info.plist */,
 				0822BF1C204DB8860094AFA3 /* GoogleService-Info.plist */,
+				080459982057A9C800616EE0 /* GoogleDirections.json */,
 			);
 			path = Parker;
 			sourceTree = "<group>";
@@ -542,6 +542,7 @@
 				08221F7E204F221800EEDE8C /* K.json in Resources */,
 				08221F7F204F221800EEDE8C /* setValueTest.json in Resources */,
 				08221F76204F221800EEDE8C /* Contents.json in Resources */,
+				080459992057A9C800616EE0 /* GoogleDirections.json in Resources */,
 				08221F90204F221800EEDE8C /* W.json in Resources */,
 				08221F8D204F221800EEDE8C /* vcTransition1.json in Resources */,
 				08221F9D204F221800EEDE8C /* Y.json in Resources */,
@@ -628,28 +629,36 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Parker/Pods-Parker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/EZYGradientView/EZYGradientView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesAPI/GooglePlacesAPI.framework",
 				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RKPieChart/RKPieChart.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZYGradientView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesAPI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKPieChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -766,7 +775,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */,
-				081A75C22055B79600B0628D /* SearchMapViewController.swift in Sources */,
 				0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */,
 				081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */,
 				0822BEEF204DB75C0094AFA3 /* AppDelegate.swift in Sources */,

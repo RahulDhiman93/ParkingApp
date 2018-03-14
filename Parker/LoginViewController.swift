@@ -97,9 +97,6 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             
             animationPerformedOnce = true
         }
-        
-        
-        
     }
     
     
@@ -294,7 +291,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                             if error == nil {
                                 print("User display name changed!")
                                 
-                                self.saveProfile(username: username, profileImageURL: url!) { success in
+                                self.saveProfile(username: username,Email: email, profileImageURL: url!) { success in
                                     if success {
                                       
                                     } else {
@@ -366,13 +363,14 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
-    func saveProfile(username:String, profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
+    func saveProfile(username:String,Email:String ,profileImageURL:URL, completion: @escaping ((_ success:Bool)->())) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let databaseRef = Database.database().reference().child("user/\(uid)")
         
         let userObject = [
             "Name": username,
+            "Email" : Email,
             "photoURL": profileImageURL.absoluteString
             ] as [String:Any]
         

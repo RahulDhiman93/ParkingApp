@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C29AA795407D77A50F8EE0C52E624058'
+               BlueprintIdentifier = '758E8E90D36A0164B21D4F20401A4F9B'
                BlueprintName = 'RKPieChart'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'RKPieChart.framework'>

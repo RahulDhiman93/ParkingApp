@@ -19,6 +19,9 @@ pod 'lottie-ios'
 pod 'EZYGradientView', :git => 'https://github.com/Niphery/EZYGradientView'
 pod 'IQKeyboardManagerSwift'
 pod 'GooglePlacesSearchController'
+pod 'GooglePlacesAPI'
+pod 'SwiftyJSON'
+
 
 
 source 'https://github.com/CocoaPods/Specs.git'
