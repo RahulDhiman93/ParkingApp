@@ -369,6 +369,9 @@ extension MainPageViewController {
         if DeviceType.IS_IPHONE_5 {
             self.HeightGoogleMapsCONST.constant -= 100
         }
+        if DeviceType.IS_IPHONE_6{
+            self.HeightGoogleMapsCONST.constant -= 50
+        }
     }
     
     

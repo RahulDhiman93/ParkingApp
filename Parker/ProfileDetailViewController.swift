@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SwiftyJSON
 import Alamofire
+import EZYGradientView
 
 class ProfileDetailViewController: UIViewController {
     
@@ -25,7 +26,14 @@ class ProfileDetailViewController: UIViewController {
     var preImgUrl:String? = ""
     var ProfileImgUrl:String? = ""
     
+    @IBOutlet weak var profileIMGWIDTH: NSLayoutConstraint!
+    @IBOutlet weak var ProfileIMGHEIGHT: NSLayoutConstraint!
+    @IBOutlet weak var MainStackTop: NSLayoutConstraint!
+    @IBOutlet weak var StackBG: UIView!
+    @IBOutlet var BackgroundView: UIView!
+    @IBOutlet weak var ImageBG: UIView!
     
+    @IBOutlet weak var indi: UIActivityIndicatorView!
     
     @IBOutlet weak var ProfileImage: UIImageView!
     
@@ -33,12 +41,36 @@ class ProfileDetailViewController: UIViewController {
     
     @IBOutlet weak var ProfileEmail: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fixIphone5()
+        self.fixiphone6()
+    }
+    
+    
     override func viewDidLoad() {
+        self.addgrad()
+    
+        self.ImageBG.layer.cornerRadius = 20
+        self.ImageBG.clipsToBounds = true
+        
+        self.ImageBG.backgroundColor = .clear
+        
+        
+        self.indi.isHidden = false
         super.viewDidLoad()
         self.handling()
+        //self.fixIphone5()
         
+        self.StackBG.layer.cornerRadius = 10
+        self.StackBG.clipsToBounds = true
+        
+        self.ProfileImage.layer.borderColor = UIColor.black.cgColor
+        self.ProfileImage.layer.borderWidth = 1.5
+        
+        if !DeviceType.IS_IPHONE_5 || !DeviceType.IS_IPHONE_6{
         self.ProfileImage.layer.cornerRadius = self.ProfileImage.frame.width/2
-        self.ProfileImage.clipsToBounds = true
+            self.ProfileImage.clipsToBounds = true}
         
         
         self.ProfileName.text = self.preName
@@ -68,13 +100,17 @@ class ProfileDetailViewController: UIViewController {
                 if let imageData = try? Data(contentsOf: rqsturl) {
                     print("MAIN MAIN MAIN MAIN MAIN")
                     print(imageData)
-                    self.ProfileImage.image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        self.ProfileImage.image = UIImage(data: imageData)
+                         self.indi.isHidden = true
+                    }
                     
                 }
             }
-            
+           
         }
         task.resume()
+        
     }
     
 
@@ -136,6 +172,21 @@ extension ProfileDetailViewController{
         }))
         self.present(alertview, animated: true, completion: nil)
         
+    }
+    
+    func addgrad(){
+        let gradientView = EZYGradientView()
+        gradientView.frame = self.StackBG.bounds
+        gradientView.firstColor = self.hexStringToUIColor(hex: "#111111")
+        gradientView.secondColor = self.hexStringToUIColor(hex: "#4B0082")
+        gradientView.angleº = 180.0
+        gradientView.colorRatio = 0.4
+        gradientView.fadeIntensity = 1.0
+        gradientView.isBlur = true
+        gradientView.blurOpacity = 0.5
+        //self.GradientView.roundCorners(corners: [.bottomLeft], radius: 50)
+        
+        self.StackBG.insertSubview(gradientView, at: 0)
     }
 }
 
@@ -203,5 +254,27 @@ extension ProfileDetailViewController {
             self.timer.invalidate()
         }
         
+    }
+}
+
+extension ProfileDetailViewController{
+    func fixIphone5(){
+        if DeviceType.IS_IPHONE_5 {
+            self.MainStackTop.constant -= 20
+            self.profileIMGWIDTH.constant -= 25
+            self.ProfileIMGHEIGHT.constant -= 25
+            self.ProfileImage.layer.cornerRadius = self.profileIMGWIDTH.constant/2
+            self.ProfileImage.clipsToBounds = true
+            
+        }
+    }
+    func fixiphone6(){
+        if DeviceType.IS_IPHONE_6{
+            self.MainStackTop.constant -= 10
+            self.profileIMGWIDTH.constant -= 20
+            self.ProfileIMGHEIGHT.constant -= 20
+            self.ProfileImage.layer.cornerRadius = self.profileIMGWIDTH.constant/2
+            self.ProfileImage.clipsToBounds = true
+        }
     }
 }

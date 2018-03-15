@@ -690,7 +690,7 @@ extension LoginViewController{
     func Logingrad(){
         let gradientView = EZYGradientView()
         gradientView.frame = LGBTNView.bounds
-        gradientView.firstColor = self.hexStringToUIColor(hex: "#000000")
+        gradientView.firstColor = self.hexStringToUIColor(hex: "#111111")
         gradientView.secondColor = self.hexStringToUIColor(hex: "#4B0082")
         gradientView.angleº = 90.0
         gradientView.colorRatio = 0.4
