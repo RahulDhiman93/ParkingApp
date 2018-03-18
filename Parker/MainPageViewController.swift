@@ -68,6 +68,8 @@ class MainPageViewController: UIViewController , GMSMapViewDelegate, CLLocationM
             menu.target = revealViewController()
             menu.action = #selector(SWRevealViewController.revealToggle(_:))
         
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
         let camera = GMSCameraPosition.camera(withLatitude: -7.9293122, longitude: 112.5879156, zoom: 15.0)
         
         self.googleMaps.camera = camera

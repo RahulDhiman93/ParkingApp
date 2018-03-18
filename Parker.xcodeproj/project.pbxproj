@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		080459992057A9C800616EE0 /* GoogleDirections.json in Resources */ = {isa = PBXBuildFile; fileRef = 080459982057A9C800616EE0 /* GoogleDirections.json */; };
+		0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */; };
+		080459A1205B2DBE00616EE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459A0205B2DBE00616EE0 /* SettingsViewController.swift */; };
+		080459A3205B2DE600616EE0 /* MyCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459A2205B2DE600616EE0 /* MyCarsViewController.swift */; };
 		081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 081A75BE20552C4800B0628D /* SWRevealViewController.m */; };
 		081A75C42055BD1D00B0628D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */; };
 		08221F73204F221800EEDE8C /* HamburgerArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 08221F39204F221100EEDE8C /* HamburgerArrow.json */; };
@@ -106,6 +109,9 @@
 /* Begin PBXFileReference section */
 		0732490B034A0EDAD51E180B /* Pods-ParkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkerTests/Pods-ParkerTests.release.xcconfig"; sourceTree = "<group>"; };
 		080459982057A9C800616EE0 /* GoogleDirections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GoogleDirections.json; sourceTree = "<group>"; };
+		0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferParkingViewController.swift; sourceTree = "<group>"; };
+		080459A0205B2DBE00616EE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		080459A2205B2DE600616EE0 /* MyCarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarsViewController.swift; sourceTree = "<group>"; };
 		081A75BD20552C4800B0628D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		081A75BE20552C4800B0628D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +331,9 @@
 				08221FB72053120600EEDE8C /* ForanimationsViewController.swift */,
 				0822BF24204E5F2D0094AFA3 /* MainPageViewController.swift */,
 				081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */,
+				0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */,
+				080459A0205B2DBE00616EE0 /* SettingsViewController.swift */,
+				080459A2205B2DE600616EE0 /* MyCarsViewController.swift */,
 				0822BEF2204DB75C0094AFA3 /* Main.storyboard */,
 				0822BEF5204DB75C0094AFA3 /* Assets.xcassets */,
 				0822BEF7204DB75C0094AFA3 /* LaunchScreen.storyboard */,
@@ -777,9 +786,12 @@
 				0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */,
 				0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */,
 				081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */,
+				0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */,
 				0822BEEF204DB75C0094AFA3 /* AppDelegate.swift in Sources */,
 				081A75C42055BD1D00B0628D /* ProfileDetailViewController.swift in Sources */,
 				08221FB82053120600EEDE8C /* ForanimationsViewController.swift in Sources */,
+				080459A1205B2DBE00616EE0 /* SettingsViewController.swift in Sources */,
+				080459A3205B2DE600616EE0 /* MyCarsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
