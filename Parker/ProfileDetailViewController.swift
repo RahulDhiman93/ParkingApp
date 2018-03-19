@@ -16,6 +16,7 @@ class ProfileDetailViewController: UIViewController {
     
     var timer = Timer()
     var timerImg = Timer()
+    var count = 0
     
     var handleName:DatabaseHandle?
     var handleEmail:DatabaseHandle?
@@ -260,21 +261,26 @@ extension ProfileDetailViewController {
 extension ProfileDetailViewController{
     func fixIphone5(){
         if DeviceType.IS_IPHONE_5 {
+            if count == 0{
             self.MainStackTop.constant -= 20
             self.profileIMGWIDTH.constant -= 25
             self.ProfileIMGHEIGHT.constant -= 25
             self.ProfileImage.layer.cornerRadius = self.profileIMGWIDTH.constant/2
             self.ProfileImage.clipsToBounds = true
-            
+                count += 1
+            }
         }
     }
     func fixiphone6(){
         if DeviceType.IS_IPHONE_6{
+            if count == 0{
             self.MainStackTop.constant -= 10
             self.profileIMGWIDTH.constant -= 20
             self.ProfileIMGHEIGHT.constant -= 20
             self.ProfileImage.layer.cornerRadius = self.profileIMGWIDTH.constant/2
             self.ProfileImage.clipsToBounds = true
+                count += 1
+        }
         }
     }
 }

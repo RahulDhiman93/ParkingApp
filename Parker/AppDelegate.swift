@@ -22,7 +22,6 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
-    var count = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -45,22 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             if user != nil {
-                if self.count == 0 {
                 let controller = storyboard.instantiateViewController(withIdentifier: "slide") as! SWRevealViewController
                 
                 //updates the view controller
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
-                }
-                else{
-                    self.ViewTransitionLottie()
-                }
+
             } else {
                 //menu screen
-                let controller = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController              //updates the view controller ( note: put self to explicitly state the
+                let controller = storyboard.instantiateViewController(withIdentifier: "des") as! DescriptionViewController         //updates the view controller ( note: put self to explicitly state the
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
-                self.count += 1
+               
             }
         }
         
@@ -148,25 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         // Perform any operations when the user disconnects from app here.
         // ...
     }
-    func ViewTransitionLottie(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let VCanimations = LOTAnimationView(name: "done")
-        VCanimations.frame = (self.window?.bounds)!
-        VCanimations.contentMode = .scaleAspectFit
-        self.window?.addSubview(VCanimations)
-        VCanimations.play(completion:{ (finished) in
-            
-            UIView.transition(with: (self.window)!,
-                              duration: 0.5,
-                              options: .transitionCurlUp,
-                              animations: { [weak self] in
-                                let controller = storyboard.instantiateViewController(withIdentifier: "slide") as! SWRevealViewController
-                                self?.window?.rootViewController = controller
-                                self?.window?.makeKeyAndVisible()
-                }, completion: nil)
-            
-        })
-    }
+    
 
 
 }

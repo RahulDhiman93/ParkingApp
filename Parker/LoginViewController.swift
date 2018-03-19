@@ -64,7 +64,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     let facebookpic: UIImage = UIImage(named: "facebook.png")!
     
     var actInd:UIActivityIndicatorView!
-    
+    var window: UIWindow?
     var imagePicker:UIImagePickerController!
  
     override func viewWillAppear(_ animated: Bool) {
@@ -229,8 +229,12 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                 self.user.text = ""
                 self.pass.text = ""
                 
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "anime") as! ForanimationsViewController
-                self.present(controller, animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "slide") as! SWRevealViewController
+                
+                //updates the view controller
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
                 
             } else {
                 self.pass.text = ""
@@ -276,8 +280,12 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                 //prints out to terminal and user sign up updated on firebase db
                 print("User created!")
                 
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "anime") as! ForanimationsViewController
-                self.present(controller, animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: "slide") as! SWRevealViewController
+                    
+                    //updates the view controller
+                    self.window?.rootViewController = controller
+                    self.window?.makeKeyAndVisible()
                 
                 // uplod the profile pic to Firebase Storage
                 self.uploadProfileImage(image) { url in

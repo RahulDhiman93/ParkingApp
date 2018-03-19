@@ -11,6 +11,9 @@
 		0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */; };
 		080459A1205B2DBE00616EE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459A0205B2DBE00616EE0 /* SettingsViewController.swift */; };
 		080459A3205B2DE600616EE0 /* MyCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459A2205B2DE600616EE0 /* MyCarsViewController.swift */; };
+		080459F5205E293000616EE0 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459F4205E293000616EE0 /* DescriptionViewController.swift */; };
+		080459F8205E2B0100616EE0 /* Front.xib in Resources */ = {isa = PBXBuildFile; fileRef = 080459F7205E2B0100616EE0 /* Front.xib */; };
+		080459FA205E2B5500616EE0 /* Front.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459F9205E2B5500616EE0 /* Front.swift */; };
 		081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 081A75BE20552C4800B0628D /* SWRevealViewController.m */; };
 		081A75C42055BD1D00B0628D /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */; };
 		08221F73204F221800EEDE8C /* HamburgerArrow.json in Resources */ = {isa = PBXBuildFile; fileRef = 08221F39204F221100EEDE8C /* HamburgerArrow.json */; };
@@ -112,6 +115,9 @@
 		0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferParkingViewController.swift; sourceTree = "<group>"; };
 		080459A0205B2DBE00616EE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		080459A2205B2DE600616EE0 /* MyCarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarsViewController.swift; sourceTree = "<group>"; };
+		080459F4205E293000616EE0 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		080459F7205E2B0100616EE0 /* Front.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Front.xib; sourceTree = "<group>"; };
+		080459F9205E2B5500616EE0 /* Front.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front.swift; sourceTree = "<group>"; };
 		081A75BD20552C4800B0628D /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		081A75BE20552C4800B0628D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +237,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080459F6205E2AF100616EE0 /* slideViews */ = {
+			isa = PBXGroup;
+			children = (
+				080459F7205E2B0100616EE0 /* Front.xib */,
+				080459F9205E2B5500616EE0 /* Front.swift */,
+			);
+			path = slideViews;
+			sourceTree = "<group>";
+		};
 		08221F37204F21F800EEDE8C /* LottieAnimationsJSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +340,7 @@
 		0822BEED204DB75C0094AFA3 /* Parker */ = {
 			isa = PBXGroup;
 			children = (
+				080459F6205E2AF100616EE0 /* slideViews */,
 				08221F37204F21F800EEDE8C /* LottieAnimationsJSON */,
 				0822BEEE204DB75C0094AFA3 /* AppDelegate.swift */,
 				0822BF20204E5EFF0094AFA3 /* LoginViewController.swift */,
@@ -334,6 +350,7 @@
 				0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */,
 				080459A0205B2DBE00616EE0 /* SettingsViewController.swift */,
 				080459A2205B2DE600616EE0 /* MyCarsViewController.swift */,
+				080459F4205E293000616EE0 /* DescriptionViewController.swift */,
 				0822BEF2204DB75C0094AFA3 /* Main.storyboard */,
 				0822BEF5204DB75C0094AFA3 /* Assets.xcassets */,
 				0822BEF7204DB75C0094AFA3 /* LaunchScreen.storyboard */,
@@ -554,6 +571,7 @@
 				080459992057A9C800616EE0 /* GoogleDirections.json in Resources */,
 				08221F90204F221800EEDE8C /* W.json in Resources */,
 				08221F8D204F221800EEDE8C /* vcTransition1.json in Resources */,
+				080459F8205E2B0100616EE0 /* Front.xib in Resources */,
 				08221F9D204F221800EEDE8C /* Y.json in Resources */,
 				08221FB42052B81F00EEDE8C /* location.json in Resources */,
 				0822BF1D204DB8860094AFA3 /* GoogleService-Info.plist in Resources */,
@@ -785,7 +803,9 @@
 			files = (
 				0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */,
 				0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */,
+				080459FA205E2B5500616EE0 /* Front.swift in Sources */,
 				081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */,
+				080459F5205E293000616EE0 /* DescriptionViewController.swift in Sources */,
 				0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */,
 				0822BEEF204DB75C0094AFA3 /* AppDelegate.swift in Sources */,
 				081A75C42055BD1D00B0628D /* ProfileDetailViewController.swift in Sources */,

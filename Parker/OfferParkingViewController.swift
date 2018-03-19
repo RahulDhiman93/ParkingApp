@@ -29,10 +29,10 @@ class OfferParkingViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         menu.target = revealViewController()
         menu.action = #selector(SWRevealViewController.revealToggle(_:))
-        
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
         // Do any additional setup after loading the view.
@@ -85,8 +85,6 @@ extension OfferParkingViewController{
     
     func alert(message:String )
     {
-        
-        
         
         let alertview = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alertview.addAction(UIAlertAction(title: "Try Again!", style: .default, handler: {

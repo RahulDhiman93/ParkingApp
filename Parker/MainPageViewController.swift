@@ -48,7 +48,6 @@ class MainPageViewController: UIViewController , GMSMapViewDelegate, CLLocationM
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationItem.title = "PARKER"
     
-        
     }
 
     override func viewDidLoad() {
