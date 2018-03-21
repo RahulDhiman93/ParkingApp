@@ -87,6 +87,7 @@
 		0822BF1D204DB8860094AFA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0822BF1C204DB8860094AFA3 /* GoogleService-Info.plist */; };
 		0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822BF20204E5EFF0094AFA3 /* LoginViewController.swift */; };
 		0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822BF24204E5F2D0094AFA3 /* MainPageViewController.swift */; };
+		08FDA283206175AD002CDCB3 /* PostMapPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FDA282206175AD002CDCB3 /* PostMapPinViewController.swift */; };
 		330545125F22C67D793B95A8 /* Pods_Parker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EE49B4083A4230B4EB7971A /* Pods_Parker.framework */; };
 		439FF99CCF97AF2ECEF17D79 /* Pods_ParkerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6734AC7C20CEF108ED668D /* Pods_ParkerTests.framework */; };
 		A6D89962C34E0EF52B0E6ED5 /* Pods_ParkerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E841A95F7250F37E1C4A47D4 /* Pods_ParkerUITests.framework */; };
@@ -199,6 +200,7 @@
 		0822BF1C204DB8860094AFA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0822BF20204E5EFF0094AFA3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0822BF24204E5F2D0094AFA3 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		08FDA282206175AD002CDCB3 /* PostMapPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMapPinViewController.swift; sourceTree = "<group>"; };
 		09F1EAD94BC2F01C0766F3C2 /* Pods-Parker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parker/Pods-Parker.release.xcconfig"; sourceTree = "<group>"; };
 		397C5E8EAB4D1AC03E99D522 /* Pods-ParkerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkerUITests/Pods-ParkerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4EE49B4083A4230B4EB7971A /* Pods_Parker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,7 +349,7 @@
 				08221FB72053120600EEDE8C /* ForanimationsViewController.swift */,
 				0822BF24204E5F2D0094AFA3 /* MainPageViewController.swift */,
 				081A75C32055BD1D00B0628D /* ProfileDetailViewController.swift */,
-				0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */,
+				08FDA284206175CF002CDCB3 /* offerParking */,
 				080459A0205B2DBE00616EE0 /* SettingsViewController.swift */,
 				080459A2205B2DE600616EE0 /* MyCarsViewController.swift */,
 				080459F4205E293000616EE0 /* DescriptionViewController.swift */,
@@ -379,6 +381,15 @@
 				0822BF10204DB75C0094AFA3 /* Info.plist */,
 			);
 			path = ParkerUITests;
+			sourceTree = "<group>";
+		};
+		08FDA284206175CF002CDCB3 /* offerParking */ = {
+			isa = PBXGroup;
+			children = (
+				0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */,
+				08FDA282206175AD002CDCB3 /* PostMapPinViewController.swift */,
+			);
+			path = offerParking;
 			sourceTree = "<group>";
 		};
 		B0BAA5B2F7BED4156F00FF64 /* Pods */ = {
@@ -804,6 +815,7 @@
 				0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */,
 				0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */,
 				080459FA205E2B5500616EE0 /* Front.swift in Sources */,
+				08FDA283206175AD002CDCB3 /* PostMapPinViewController.swift in Sources */,
 				081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */,
 				080459F5205E293000616EE0 /* DescriptionViewController.swift in Sources */,
 				0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */,

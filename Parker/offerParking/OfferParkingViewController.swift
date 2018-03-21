@@ -21,7 +21,7 @@ class OfferParkingViewController: UIViewController {
         let attributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 50)!]
         UINavigationBar.appearance().titleTextAttributes = attributes
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.title = "PARKER"
+        self.navigationItem.title = "Offer"
         
         
     }
