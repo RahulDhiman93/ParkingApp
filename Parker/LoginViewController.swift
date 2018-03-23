@@ -379,7 +379,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         let userObject = [
             "Name": username,
             "Email" : Email,
-            "photoURL": profileImageURL.absoluteString
+            "photoURL": profileImageURL.absoluteString,
+            "ArrayPins": [String("0"):"Blah blah"]
             ] as [String:Any]
         
         databaseRef.setValue(userObject) { error, ref in

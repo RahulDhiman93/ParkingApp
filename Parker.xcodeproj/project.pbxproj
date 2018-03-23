@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0801750820628DEE004351D5 /* ScrollPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0801750720628DEE004351D5 /* ScrollPostViewController.swift */; };
+		0801750A20628F10004351D5 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0801750920628F10004351D5 /* post.swift */; };
+		0801750C20628F21004351D5 /* post.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0801750B20628F21004351D5 /* post.xib */; };
 		080459992057A9C800616EE0 /* GoogleDirections.json in Resources */ = {isa = PBXBuildFile; fileRef = 080459982057A9C800616EE0 /* GoogleDirections.json */; };
 		0804599F205B2D8400616EE0 /* OfferParkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */; };
 		080459A1205B2DBE00616EE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080459A0205B2DBE00616EE0 /* SettingsViewController.swift */; };
@@ -112,6 +115,9 @@
 
 /* Begin PBXFileReference section */
 		0732490B034A0EDAD51E180B /* Pods-ParkerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParkerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParkerTests/Pods-ParkerTests.release.xcconfig"; sourceTree = "<group>"; };
+		0801750720628DEE004351D5 /* ScrollPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPostViewController.swift; sourceTree = "<group>"; };
+		0801750920628F10004351D5 /* post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
+		0801750B20628F21004351D5 /* post.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = post.xib; sourceTree = "<group>"; };
 		080459982057A9C800616EE0 /* GoogleDirections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GoogleDirections.json; sourceTree = "<group>"; };
 		0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferParkingViewController.swift; sourceTree = "<group>"; };
 		080459A0205B2DBE00616EE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +250,8 @@
 			children = (
 				080459F7205E2B0100616EE0 /* Front.xib */,
 				080459F9205E2B5500616EE0 /* Front.swift */,
+				0801750B20628F21004351D5 /* post.xib */,
+				0801750920628F10004351D5 /* post.swift */,
 			);
 			path = slideViews;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 			children = (
 				0804599E205B2D8400616EE0 /* OfferParkingViewController.swift */,
 				08FDA282206175AD002CDCB3 /* PostMapPinViewController.swift */,
+				0801750720628DEE004351D5 /* ScrollPostViewController.swift */,
 			);
 			path = offerParking;
 			sourceTree = "<group>";
@@ -604,6 +613,7 @@
 				08221F92204F221800EEDE8C /* Boat_Loader.json in Resources */,
 				08221F8F204F221800EEDE8C /* P.json in Resources */,
 				08221F7A204F221800EEDE8C /* M.json in Resources */,
+				0801750C20628F21004351D5 /* post.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -815,6 +825,8 @@
 				0822BF25204E5F2D0094AFA3 /* MainPageViewController.swift in Sources */,
 				0822BF21204E5EFF0094AFA3 /* LoginViewController.swift in Sources */,
 				080459FA205E2B5500616EE0 /* Front.swift in Sources */,
+				0801750A20628F10004351D5 /* post.swift in Sources */,
+				0801750820628DEE004351D5 /* ScrollPostViewController.swift in Sources */,
 				08FDA283206175AD002CDCB3 /* PostMapPinViewController.swift in Sources */,
 				081A75BF20552C4800B0628D /* SWRevealViewController.m in Sources */,
 				080459F5205E293000616EE0 /* DescriptionViewController.swift in Sources */,

@@ -14,10 +14,12 @@ import Firebase
 class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocationManagerDelegate{
     
     var timer = Timer()
+    var timer1 = Timer()
     var HandleLocation:DatabaseHandle?
     var ref:DatabaseReference?
     var count = 0
-    var FetchedArray:[String] = []
+    var FetchedArray:Int? = 0
+    var flag = 0
     
     @IBOutlet weak var TopLabel: UILabel!
     @IBOutlet weak var MapView: GMSMapView!
@@ -29,8 +31,7 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
     var locationSelected = Located.startLocation
     var locationStart = CLLocation()
     var locationEnd = CLLocation()
-    var arrayCoordinates : [CLLocationCoordinate2D] = []
-    var FirebaseArrayPushing: [String] = []
+    var arrayCoordinates : CLLocationCoordinate2D?
     var longPressRecognizer = UILongPressGestureRecognizer()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,7 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.handling()
         self.nextBTn.layer.cornerRadius = 20
         self.nextBTn.clipsToBounds = true
         
@@ -73,23 +75,11 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
     
     @IBAction func NextButtonClicked(_ sender: Any) {
     
-        
-        
-      //  if self.count > 0 {
-        
-        self.savePin(completion: { success in
-            
-            if success {
-                print("YAHOOOOOOOOOOO YAHOOOOOO")
-            }
-            else{
-                print("NOPESSSSSSSSSS")
-            }
-            
-        })
-      }
+        if count > 0 {
+            self.LoadIt()
+        }
     
-    
+    }
  
 }
 
@@ -103,7 +93,7 @@ extension PostMapPinViewController{
         
         if self.CurLocationNow?.coordinate.latitude != nil && self.CurLocationNow?.coordinate.longitude != nil {
             
-            let camera2 = GMSCameraPosition.camera(withLatitude: (self.CurLocationNow?.coordinate.latitude)!, longitude: (self.CurLocationNow?.coordinate.longitude)!, zoom: 16.0)
+            let camera2 = GMSCameraPosition.camera(withLatitude: (self.CurLocationNow?.coordinate.latitude)!, longitude: (self.CurLocationNow?.coordinate.longitude)!, zoom: 18.0)
             
             self.MapView.camera = camera2
             self.MapView.delegate = self
@@ -231,9 +221,8 @@ extension PostMapPinViewController : UIGestureRecognizerDelegate
 {
     @objc func longPress(_ sender: UILongPressGestureRecognizer) {
         let newMarker = GMSMarker(position: MapView.projection.coordinate(for: sender.location(in: MapView)))
-        self.arrayCoordinates.removeAll()
         self.MapView.clear()
-        self.arrayCoordinates.append(newMarker.position)
+        self.arrayCoordinates = newMarker.position
         newMarker.map = MapView
         self.count += 1
         print(self.arrayCoordinates)
@@ -245,43 +234,87 @@ extension PostMapPinViewController : UIGestureRecognizerDelegate
     }
 }
 
-extension PostMapPinViewController {
+
+extension PostMapPinViewController{
     
-    func savePin(completion: @escaping ((_ success:Bool)->())){
+    func appendArray(completion: @escaping ((_ success:Bool)->())){
         
-      
-        let pushedLoc = String(describing: self.arrayCoordinates[0])
+        let pushedLoc = String(describing: self.arrayCoordinates!)
         
-        self.FirebaseArrayPushing.append(pushedLoc)
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let databaseRef = Database.database().reference().child("user/\(uid)")
+        let databaseRef = Database.database().reference().child("user/\(uid)/ArrayPins")
+        let databaseRefGlobal = Database.database().reference().child("GlobalPins")
         
         let userObject = [
-            "ArrayPins": self.FirebaseArrayPushing
-        ] as [String:Any]
+            String(self.FetchedArray!):pushedLoc
+            ] as [String:Any]
         
-        databaseRef.setValue(userObject) { error, ref in
+        let userObject2 = [
+            String(self.FetchedArray!+Int(arc4random())):pushedLoc
+            ] as [String:Any]
+        
+        databaseRef.updateChildValues(userObject){ error, ref in
+            completion(error == nil)
+        }
+        databaseRefGlobal.updateChildValues(userObject2){ error, ref in
             completion(error == nil)
         }
     }
-    
+}
+
+extension PostMapPinViewController{
     func handling(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
         self.ref = Database.database().reference()
         //Going deep into firebase hierarchy
         self.HandleLocation = self.ref?.child("user").child(uid).child("ArrayPins").observe(.value, with: { (snapshot) in
             
-            if let value = snapshot.value as? [String]{
+            if let value = snapshot.childrenCount as? UInt{
                 
-                self.FetchedArray = value
+                print("VALUE VALUE")
+                print(value)
+                let vvalue = Int(value)
+                self.FetchedArray = vvalue
                 
             }
         })
     }
-    
 }
 
+extension PostMapPinViewController{
+    
+    
+    func LoadIt(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        timer1 = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.chartload1), userInfo: nil, repeats: true)
+    }
+    
+    @objc func chartload1(){
+        
+        if self.FetchedArray == 0 {
+            
+        }
+        else{
+            self.appendArray(completion: { success in
+                if success {
+                    print("Yahoo Yahoo Yahooo")
+                    self.stopTimer1()
+                }
+                else{
+                    print("NO NO NO")
+                }
+            })
+        }
+        
+        }
+    
+    
+    func stopTimer1(){
+        timer1.invalidate()
+        
+    }
+}
 
     
 
