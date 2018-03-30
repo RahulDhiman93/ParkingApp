@@ -48,7 +48,6 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.handling()
         self.nextBTn.layer.cornerRadius = 20
         self.nextBTn.clipsToBounds = true
@@ -77,8 +76,9 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
     
         if count > 0 {
             self.LoadIt()
+            self.nextBTn.isEnabled = false
         }
-    
+        
     }
  
 }
@@ -240,26 +240,14 @@ extension PostMapPinViewController{
     func appendArray(completion: @escaping ((_ success:Bool)->())){
         
         let pushedLoc = String(describing: self.arrayCoordinates!)
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let databaseRef = Database.database().reference().child("user/\(uid)/ArrayPins")
-        let databaseRefGlobal = Database.database().reference().child("GlobalPins")
-        
-        let userObject = [
-            String(self.FetchedArray!):pushedLoc
-            ] as [String:Any]
-        
-        let userObject2 = [
-            String(self.FetchedArray!+Int(arc4random())):pushedLoc
-            ] as [String:Any]
-        
-        databaseRef.updateChildValues(userObject){ error, ref in
-            completion(error == nil)
-        }
-        databaseRefGlobal.updateChildValues(userObject2){ error, ref in
-            completion(error == nil)
-        }
+        self.performSegue(withIdentifier: "sspin", sender: pushedLoc)
+       print("PUSHED LOC HERE")
+        print(pushedLoc)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let sg = segue.destination as! ScrollPostViewController
+        sg.PostPinString = sender as! String
     }
 }
 
@@ -296,10 +284,11 @@ extension PostMapPinViewController{
             
         }
         else{
+            self.stopTimer1()
             self.appendArray(completion: { success in
                 if success {
                     print("Yahoo Yahoo Yahooo")
-                    self.stopTimer1()
+                    
                 }
                 else{
                     print("NO NO NO")

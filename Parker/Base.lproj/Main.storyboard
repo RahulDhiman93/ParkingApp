@@ -903,7 +903,6 @@
                                         </state>
                                         <connections>
                                             <action selector="NextButtonClicked:" destination="S4z-Fi-Ucv" eventType="touchUpInside" id="3IZ-tC-nxX"/>
-                                            <segue destination="cQC-qb-x4U" kind="show" id="AQ9-W9-cMK"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -937,6 +936,7 @@
                         <outlet property="TopLabel" destination="25G-uQ-AUq" id="wrA-Oe-jRl"/>
                         <outlet property="btnView" destination="jDV-8e-Acw" id="DWh-8w-ghb"/>
                         <outlet property="nextBTn" destination="10T-50-1yP" id="XRT-cl-uaQ"/>
+                        <segue destination="cQC-qb-x4U" kind="show" identifier="sspin" id="9FQ-MW-N6b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlk-e1-evd" userLabel="First Responder" sceneMemberID="firstResponder"/>
