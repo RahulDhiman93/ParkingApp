@@ -43,12 +43,8 @@ class ScrollPostViewController: UIViewController {
            
             self.ScrollView.addSubview(pageView)
             
-            
-            
-            
                 pageView.frame.size.width = self.ScrollView.bounds.size.width
-           
-            
+
                 let gradientView = EZYGradientView()
             if DeviceType.IS_IPHONE_6P{
                 gradientView.frame = CGRect(x:0 ,y:0 ,width: pageView.Gview.bounds.size.width+40,height: pageView.Gview.bounds.size.height)
@@ -69,63 +65,32 @@ class ScrollPostViewController: UIViewController {
                 pageView.Gview.insertSubview(gradientView, at: 0)
             
             pageView.PlaceOfferButton.addTarget(self, action: #selector(ScrollPostViewController.FinalSUb(sender:)), for: .touchUpInside)
-            
-            self.createDatePicker()
+            pageView.createDatePicker()
+            pageView.animationsLOT()
+            self.roundCorner(pageView.PlaceOfferButton)
         }
         
     }
     
-    func createDatePicker()
-    {
-        
-          if let pageView = Bundle.main.loadNibNamed("post", owner: self, options: nil)?.first as? post {
-        
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-            print("IM INNTEXT IM IN TEXT IM IN TET")
-        //setting up DONE button in toolbar
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([done], animated: false)
-        
-        pageView.TimeRegion.inputAccessoryView = toolbar
-        pageView.TimeRegion.inputView = picker
-        
-        picker.datePickerMode = .time
-        }
-    }
-    
-    @objc func donePressed(){
-          if let pageView = Bundle.main.loadNibNamed("post", owner: self, options: nil)?.first as? post {
-        
-        // Date Format settings
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .medium
-        let dateString = formatter.string(from: picker.date)
-        
-        
-        UIView.transition(with: (pageView.TimeRegion)!,
-                          duration: 1.0,
-                          options: .transitionCrossDissolve,
-                          animations: { [weak self] in
-                            pageView.TimeRegion.text = "\(dateString)"
-            }, completion: nil)
-        
-        self.view.endEditing(true)
-        }
-    }
+   
     
 }
 
 extension ScrollPostViewController{
     
     @objc func FinalSUb (sender: UIButton){
-        print("BALLE BALLE BALLE BALLE BALLE")
+        //print("BALLE BALLE BALLE BALLE BALLE")
+        if let pageView = Bundle.main.loadNibNamed("post", owner: self, options: nil)?.first as? post {
+           
+            
+               
+
+        
+    }
     }
     
-    func roundCorner(_ rView:UIView){
-        rView.layer.cornerRadius = rView.bounds.size.width/2
+    func roundCorner(_ rView:UIButton){
+        rView.layer.cornerRadius = 10
         rView.clipsToBounds = true
     }
     
