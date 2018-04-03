@@ -67,7 +67,7 @@ class ProfileDetailViewController: UIViewController {
         self.StackBG.clipsToBounds = true
         
         self.ProfileImage.layer.borderColor = UIColor.black.cgColor
-        self.ProfileImage.layer.borderWidth = 2  
+        self.ProfileImage.layer.borderWidth = 1
         
         if !DeviceType.IS_IPHONE_5 || !DeviceType.IS_IPHONE_6{
         self.ProfileImage.layer.cornerRadius = self.ProfileImage.frame.width/2
