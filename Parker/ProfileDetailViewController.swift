@@ -63,7 +63,7 @@ class ProfileDetailViewController: UIViewController {
         self.handling()
         //self.fixIphone5()
         
-        self.StackBG.layer.cornerRadius = 11
+        self.StackBG.layer.cornerRadius = 10
         self.StackBG.clipsToBounds = true
         
         self.ProfileImage.layer.borderColor = UIColor.black.cgColor
