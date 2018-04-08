@@ -75,6 +75,7 @@ class PostMapPinViewController: UIViewController, GMSMapViewDelegate , CLLocatio
     @IBAction func NextButtonClicked(_ sender: Any) {
     
         if count > 0 {
+            print(" BUTTO PREESSSESS HERE")
             self.LoadIt()
             self.nextBTn.isEnabled = false
         }
@@ -240,14 +241,17 @@ extension PostMapPinViewController{
     func appendArray(completion: @escaping ((_ success:Bool)->())){
         
         let pushedLoc = String(describing: self.arrayCoordinates!)
-        self.performSegue(withIdentifier: "sspin", sender: pushedLoc)
+        let lat:Double = (self.arrayCoordinates?.latitude)!
+        let lon:Double = (self.arrayCoordinates?.longitude)!
+        let latlongarrat:[Double] = [lat,lon]
+        self.performSegue(withIdentifier: "sspin", sender: latlongarrat)
        print("PUSHED LOC HERE")
         print(pushedLoc)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sg = segue.destination as! ScrollPostViewController
-        sg.PostPinString = sender as! String
+        sg.latlongstring = sender as! [Double]
     }
 }
 

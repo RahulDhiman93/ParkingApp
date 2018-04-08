@@ -9,11 +9,19 @@
 import UIKit
 import Foundation
 import Lottie
+import Firebase
 
 class post: UIView, UITextFieldDelegate {
     
      let picker = UIDatePicker()
      var intprice:Double = 0.0
+    
+    
+    var handleCount:DatabaseHandle?
+    var handleUserCount:DatabaseHandle?
+    var ref:DatabaseReference?
+    var count:Int?
+    var userCount:Int?
     
      var DataDescription:String = ""
      var DataLocation:String = ""
@@ -38,11 +46,14 @@ class post: UIView, UITextFieldDelegate {
     @IBOutlet weak var LocationPictureButton: UIButton!
     @IBOutlet weak var PlaceOfferButton: UIButton!
     
+    @IBOutlet weak var doneInd: UIActivityIndicatorView!
     
     
     @IBAction func DoneButtonDone(_ sender: Any) {
         
 
+        
+        
         if PlaceDescription.text != nil {
             DataDescription = PlaceDescription.text!
         }
@@ -90,8 +101,54 @@ class post: UIView, UITextFieldDelegate {
         }
         
         else {
+            doneInd.isHidden = false
+            PlaceOfferButton.isHidden = true
             
+          guard let uid = Auth.auth().currentUser?.uid else { return }
             
+            let databaseRef = Database.database().reference().child("user/\(uid)/ArrayPins/\(userCount!+1)")
+            let databaseRefGlobal = Database.database().reference().child("GlobalPins/\(count!+1)")
+            let countUser = Database.database().reference().child("count")
+            let countmin = Database.database().reference().child("user/\(uid)")
+           
+            
+            let userObject = [
+                "Description":DataDescription,
+                "Location":DataLocation,
+                "Car":DataCar,
+                "Time":DataTime,
+                "Price":DataTotalPrice
+                ] as [String:Any]
+            
+            let userObject2 = [
+                "Description":DataDescription,
+                "Location":DataLocation,
+                "Car":DataCar,
+                "Time":DataTime,
+                "Price":DataTotalPrice
+                ] as [String:Any]
+            
+            let userObject3 = [
+                "g": count!+1
+                ] as [String:Any]
+            
+            let userObject4 = [
+                "u": userCount!+1
+                ] as [String:Any]
+            
+            databaseRef.updateChildValues(userObject){ error, ref in
+               // completion(error == nil)
+            }
+            databaseRefGlobal.updateChildValues(userObject2){ error, ref in
+                //completion(error == nil)
+            }
+            countUser.updateChildValues(userObject3){ error, ref in
+                //completion(error == nil)
+            }
+            countmin.updateChildValues(userObject4){ error, ref in
+                //completion(error == nil)
+            }
+ 
         }
     
     
@@ -141,6 +198,7 @@ class post: UIView, UITextFieldDelegate {
         let animations = LOTAnimationView(name: "bouncy_mapmaker")
         self.lotanime(animations, ChartView)
         MyPrice.delegate = self
+        doneInd.isHidden = true
     }
     
     func lotanime(_ animations:LOTAnimationView,_ vview:UIView){
@@ -209,6 +267,31 @@ class post: UIView, UITextFieldDelegate {
         let strprice = intprice + (0.2 * intprice)
         DataTotalPrice = String(strprice)
         TotalPrice.text = DataTotalPrice
+    }
+    
+    func handling(){
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        self.ref = Database.database().reference()
+        
+        handleCount = self.ref?.child("GlobalPins").observe(.value, with: { (snapshot) in
+            
+            if let value1 = snapshot.childrenCount as? UInt{
+                
+                self.count = Int(value1)
+            }
+            
+        })
+        
+        handleUserCount = self.ref?.child("user").child(uid).child("ArrayPins").observe(.value, with: { (snapshot) in
+            
+            
+            if let value1 = snapshot.childrenCount as? UInt{
+                
+                self.userCount = Int(value1)
+            }
+            
+        })
     }
     
 }

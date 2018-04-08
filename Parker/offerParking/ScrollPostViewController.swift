@@ -9,15 +9,26 @@
 import UIKit
 import EZYGradientView
 import RKPieChart
+import Firebase
 
 class ScrollPostViewController: UIViewController {
-
+ 
+    
+    var timer = Timer()
+    
+    var handleG:DatabaseHandle?
+    var handleU:DatabaseHandle?
+    var ref:DatabaseReference?
+    var countG:Int?
+    var countU:Int?
+    
     
     let picker = UIDatePicker()
     let pickerCat = UIPickerView()
     
     @IBOutlet weak var ScrollView: UIScrollView!
-    var PostPinString:String = ""
+
+    var latlongstring:[Double] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +52,8 @@ class ScrollPostViewController: UIViewController {
         
         if let pageView = Bundle.main.loadNibNamed("post", owner: self, options: nil)?.first as? post {
            
+            
+            pageView.handling()
             self.ScrollView.addSubview(pageView)
             
                 pageView.frame.size.width = self.ScrollView.bounds.size.width
@@ -78,15 +91,51 @@ class ScrollPostViewController: UIViewController {
 
 extension ScrollPostViewController{
     
-    @objc func FinalSUb (sender: UIButton){
-        //print("BALLE BALLE BALLE BALLE BALLE")
-        if let pageView = Bundle.main.loadNibNamed("post", owner: self, options: nil)?.first as? post {
-           
+    
+    func fireFetch(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.fetchDetails), userInfo: nil, repeats: true)
+    }
+    
+    @objc func fetchDetails(){
+     
+        if countG != nil && countU != nil {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
             
-               
-
+            let databaseRef = Database.database().reference().child("user/\(uid)/ArrayPins/\(countU!)")
+            let databaseRefGlobal = Database.database().reference().child("GlobalPins/\(countG!)")
+            
+            let userObject = [
+                "pinloc": ["lat":self.latlongstring[0],"long":self.latlongstring[1]]
+                ] as [String:Any]
+            
+            let userObject2 = [
+                "pinloc": ["lat":self.latlongstring[0],"long":self.latlongstring[1]]
+                ] as [String:Any]
+            
+            databaseRef.updateChildValues(userObject){ error, ref in
+                // completion(error == nil)
+            }
+            databaseRefGlobal.updateChildValues(userObject2){ error, ref in
+                //completion(error == nil)
+            }
+            timer.invalidate()
+            
+            let editor = self.storyboard?.instantiateViewController(withIdentifier: "slide") as! SWRevealViewController
+            self.present(editor, animated: true, completion: nil)
+            
+        }
+        
         
     }
+    
+    @objc func FinalSUb (sender: UIButton){
+        //print("BALLE BALLE BALLE BALLE BALLE")
+        self.fireFetch()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+            self.ScrollHandling()
+        })
     }
     
     func roundCorner(_ rView:UIButton){
@@ -145,6 +194,31 @@ extension ScrollPostViewController{
         }))
         self.present(alertview, animated: true, completion: nil)
         
+    }
+    
+    func ScrollHandling(){
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        self.ref = Database.database().reference()
+        
+        handleG = self.ref?.child("count").child("g").observe(.value, with: { (snapshot) in
+            
+            if let value1 = snapshot.value as? Int{
+                
+                self.countG = Int(value1)
+            }
+            
+        })
+        
+        handleU = self.ref?.child("user").child(uid).child("u").observe(.value, with: { (snapshot) in
+            
+            
+            if let value1 = snapshot.value as? Int{
+                
+                self.countU = Int(value1)
+            }
+            
+        })
     }
 }
 
