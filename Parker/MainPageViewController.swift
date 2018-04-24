@@ -25,6 +25,11 @@ class MainPageViewController: UIViewController , GMSMapViewDelegate, CLLocationM
     var timerCount = Timer()
     var timershow = Timer()
     var markers:[GMSMarker] = []
+    var pintimer = Timer()
+   
+   
+    
+    
     
     @IBOutlet weak var HeightGoogleMapsCONST: NSLayoutConstraint!
     @IBOutlet var MainView: UIView!
@@ -43,6 +48,9 @@ class MainPageViewController: UIViewController , GMSMapViewDelegate, CLLocationM
     @IBOutlet weak var BookButton: UIButton!
     
     @IBAction func bookingbtnclicked(_ sender: Any) {
+        
+        
+        
     }
     
     
@@ -161,9 +169,9 @@ func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     print("TAPPED TAPPED")
     
     let DataNeeded:[String] = marker.userData as! [String]
-    self.CarName.text = DataNeeded[0]
-    self.LocationInfo.text = DataNeeded[1]
-    self.Description.text = DataNeeded[2]
+    self.CarName.text = DataNeeded[2]
+    self.LocationInfo.text = DataNeeded[0]
+    self.Description.text = DataNeeded[5]
     self.TimeInfo.text = marker.title
     self.PriceInfo.text = marker.snippet
     self.BookingStack.isHidden = false
@@ -472,6 +480,8 @@ extension MainPageViewController {
     @objc func thanshow(){
         if !self.showpins.isEmpty{
             
+         
+            
             print("Showing Pins")
             for c in 0...self.showpins.count{
                  var neededata:[String] = []
@@ -527,6 +537,22 @@ extension MainPageViewController {
                         if key2 == "Description"{
                             neededata.append(val as! String)
                         }
+                        
+                        if key2 == "Day"{
+                            let rollNumber:String = String(format: "%@", val as! CVarArg)
+                            neededata.append(rollNumber)
+                        }
+                        
+                        if key2 == "Month"{
+                            let rollNumber:String = String(format: "%@", val as! CVarArg)
+                            neededata.append(rollNumber)
+                        }
+                        
+                        if key2 == "Year" {
+                            print(val)
+                            let rollNumber:String = String(format: "%@", val as! CVarArg)
+                            neededata.append(rollNumber)
+                        }
                         print("countbro")
                         
                     }
@@ -546,7 +572,65 @@ extension MainPageViewController {
     func showmarkers(){
         for c in 0...self.markers.count-1{
             print(markers[c])
+           
             self.markers[c].map = googleMaps
+            
+            
+        }
+        self.ppintimer()
+    }
+    
+    func ppintimer(){
+       pintimer =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.pintimedone), userInfo: nil, repeats: true)
+    }
+    
+   @objc func pintimedone(){
+    
+        let mdate = Date()
+        let mcalendar = Calendar.current
+        let day = mcalendar.component(.day, from: mdate)
+        let month = mcalendar.component(.month, from: mdate)
+        let year = mcalendar.component(.year, from: mdate)
+        var hour = mcalendar.component(.hour, from: mdate)
+        let minutes = mcalendar.component(.minute, from: mdate)
+    
+        for c in 0...self.markers.count-2{
+            
+            if hour > 12 {
+                hour = hour - 12
+            }
+            
+            let stringArray = markers[c].title?.components(separatedBy: NSCharacterSet.decimalDigits.inverted)
+            
+            let DataNeeded:[String] = markers[c].userData as! [String]
+            
+            if Int(DataNeeded[1])! < year {
+               
+                markers[c].map = nil
+            }
+                
+            else if Int(DataNeeded[3])! < month {
+                
+               markers[c].map = nil
+            }
+                
+            else if Int(DataNeeded[4])! < day {
+               
+               markers[c].map = nil
+            }
+                
+            else if Int(stringArray![0])! < hour {
+                
+               markers[c].map = nil
+            }
+                
+            else if Int(stringArray![1])! < minutes {
+                
+               markers[c].map = nil
+            }
+            
+            
+            
         }
     }
     

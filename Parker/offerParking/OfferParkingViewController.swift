@@ -36,6 +36,30 @@ class OfferParkingViewController: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
         // Do any additional setup after loading the view.
+        
+        let DataTime:String = "10:30 AM"
+        
+        let stringArray = DataTime.components(separatedBy: NSCharacterSet.decimalDigits.inverted)
+        print(stringArray)
+        let newString = NSArray(array: stringArray).componentsJoined(by: "")
+        let timeout = Int(DataTime)
+        print("HEY GUYS HEY THERE")
+        print(newString)
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let year = calendar.component(.year, from: date)
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        
+        
+        print(day)
+        print(month)
+        print(year)
+        print(hour)
+        print(minutes)
     }
 
    

@@ -15,6 +15,8 @@ class post: UIView, UITextFieldDelegate {
     
      let picker = UIDatePicker()
      var intprice:Double = 0.0
+     let date = Date()
+     let calendar = Calendar.current
     
     
     var handleCount:DatabaseHandle?
@@ -101,6 +103,9 @@ class post: UIView, UITextFieldDelegate {
         }
         
         else {
+            let day = self.calendar.component(.day, from: date)
+            let month = self.calendar.component(.month, from: date)
+            let year = self.calendar.component(.year, from: date)
             doneInd.isHidden = false
             PlaceOfferButton.isHidden = true
             
@@ -112,12 +117,18 @@ class post: UIView, UITextFieldDelegate {
             let countmin = Database.database().reference().child("user/\(uid)")
            
             
+            
+            
+            
             let userObject = [
                 "Description":DataDescription,
                 "Location":DataLocation,
                 "Car":DataCar,
                 "Time":DataTime,
-                "Price":DataTotalPrice
+                "Price":DataTotalPrice,
+                "Day":day,
+                "Month":month,
+                "Year":String(year)
                 ] as [String:Any]
             
             let userObject2 = [
@@ -125,7 +136,10 @@ class post: UIView, UITextFieldDelegate {
                 "Location":DataLocation,
                 "Car":DataCar,
                 "Time":DataTime,
-                "Price":DataTotalPrice
+                "Price":DataTotalPrice,
+                "Day":day,
+                "Month":month,
+                "Year":year
                 ] as [String:Any]
             
             let userObject3 = [
@@ -199,6 +213,7 @@ class post: UIView, UITextFieldDelegate {
         self.lotanime(animations, ChartView)
         MyPrice.delegate = self
         doneInd.isHidden = true
+        
     }
     
     func lotanime(_ animations:LOTAnimationView,_ vview:UIView){
@@ -267,6 +282,8 @@ class post: UIView, UITextFieldDelegate {
         let strprice = intprice + (0.2 * intprice)
         DataTotalPrice = String(strprice)
         TotalPrice.text = DataTotalPrice
+        
+        
     }
     
     func handling(){
