@@ -573,7 +573,7 @@ extension MainPageViewController {
         for c in 0...self.markers.count-1{
             print(markers[c])
            
-            self.markers[c].map = googleMaps
+            //self.markers[c].map = googleMaps
             
             
         }
@@ -629,6 +629,9 @@ extension MainPageViewController {
                markers[c].map = nil
             }
             
+            else {
+                markers[c].map = self.googleMaps
+            }
             
             
         }
